@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #FAFAFA;
+}
+
 header {
     height: 69px;
     background: #EC362D;
@@ -55,20 +59,23 @@ header p{
     flex-direction: column;
     align-items: center;
     width: 100%;
-
-    background-color: aquamarine;
+    background-color: #FAFAFA;
 }
 
 .pergunta{
     width: 759px;
     height: 676px;
-    background-color: beige;
+    background-color: #FFFFFF;
     margin-top: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
 .title_pergunta{
     height: 138px;
-    background-color: #EC362D;
+    width: 689px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -79,6 +86,7 @@ header p{
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+    margin-top: 28px;
 }
 
 .respostas{
@@ -121,4 +129,95 @@ header p{
 
 .respostaCorreta{
     color: #009C22;
+}
+
+.resultadoQuizz{
+    width: 759px;
+    height: 430px;
+    margin-top: 44px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #FFFFFF;
+}
+
+.qtdAcertos{
+    margin-top: 18px;
+    width: 727px;
+    height: 99px;
+    background-color: #EC362D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qtdAcertos p{
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.mensagem{
+    width: 727px;
+    height: 364px;
+    display: flex;
+    margin-top: 18px;
+}
+
+.mensagem img{
+    width: 364px;
+    height: 273px;
+}
+
+.mensagem p{
+    margin-left: 21px;
+    width: 328px;
+    height: 250px;
+}
+
+.navegacaoPosQuizz{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 57px;
+}
+
+.navegacaoPosQuizz button{
+    background: #EC362D;
+    border-radius: 15px;
+    width: 260px;
+    height: 52px;
+    border: none;
+    color: #FFFFFF;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.navegacaoPosQuizz p{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #818181;
+    margin-top: 16px;
 }
