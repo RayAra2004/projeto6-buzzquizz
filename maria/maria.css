@@ -27,21 +27,15 @@
     font-family: 'Roboto', sans-serif;
   }
 
-  .container {
+  .container,
+  .container-questions,
+  .container-level {
     height: auto;
     width: 600px;
     margin-top: 140px;  
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .title {
-    color: #000000;
-    font-weight: 700;
-    font-size: 23px;
-    line-height: 27px;
-    font-family: 'Roboto', sans-serif;
   }
 
   .content {
@@ -53,19 +47,8 @@
     padding: 20px;
   }
 
-  .margin-input{
-    margin-top: 9px;
-  }
-  
-  .margin-input2{
-    margin-top: 14px;
-  }
-
-  .margin-input3{
-    margin-top: 32px;
-  }
-
-  .content input {
+  .content input,
+  .input-questions input {
     width: 564px;
     height: 46px;
     border: 1px solid #D1D1D1;
@@ -73,7 +56,6 @@
     padding-left: 23px; 
     font-family: 'Roboto', sans-serif;
     outline: none;
-    font-weight: 500;
     font-size: 20px;
     line-height: 22px;
   }
@@ -100,9 +82,44 @@
     font-size: 21px;
     line-height: 25px;
     font-family: 'Roboto', sans-serif;
+    cursor: pointer;
   }
 
-  .question {
+  .title {
+    color: #000000;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .image-Quizz,
+  .question-Quizz,
+  .level-Quizz {
+    margin-top: 9px;
+  }
+
+  .color-question,
+  .image-response,
+  .image-incorrect,
+  .image-incorrect1,
+  .image-incorrect2,
+  .image-incorrect3 {
+    margin-top: 14px;
+  }
+
+  .response-incorrect2,
+  .response-incorrect3 {
+    margin-top: 32px;
+  }
+
+  .input-questions {
+    height: auto;
+    width: 600px;
+    margin-top: 27px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    padding: 20px;
     font-family: 'Roboto', sans-serif;
     color: #000000;
     font-weight: 700;
@@ -117,8 +134,8 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
-    margin-top: 28px;
-    margin-bottom: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   .descrition {
@@ -164,6 +181,11 @@
         margin-top: 106px;  
       }
 
+      .container-questions {
+        width: 100%;
+        margin-top: 106px; 
+      }
+
       .content {
         width: 100%;
         margin-top: 29px;
@@ -173,7 +195,7 @@
         width: 98%;
       }
 
-      .questions {
+      .input-questions {
         width: 100%;
       }
 
