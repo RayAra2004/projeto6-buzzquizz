@@ -4,9 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/reset.css">
+     <link rel="stylesheet" href="./css/mateus.css">
+    <link rel="stylesheet" href="./css/raynan.css">
+    <title>BuzzQuizz</title>
 </head>
 <body>
-    
+    <div class="header">
+        <div> 
+            <p> BuzzQuizz </p>
+        </div>
+    </div>
+
+     <div class="container">
+        <div class="caixa-botao">
+            <div>
+                <div class="texto-botao"> <p> Você não criou nenhum </p> </div>
+               <div class="texto-botao"> <p> quizz ainda :( </p> </div> 
+            </div>
+            <!-- deve ter onclick para a tela de criação de quizz -->
+            <div>
+                <button class="botao-criar-quizz"> <p> Criar Quizz </p> </button>
+            </div>
+        </div>
+         <div class="caixa-seus-quizzes escondido">
+            <div class="cab-seus-quizzes"> 
+                <div class="titulo-seus-quizzes"> <p> Seus quizzes </p> </div>
+                <!-- deve ter onclick para a tela de criação de quizz -->
+                <div> 
+                    <button class ="botao-criar-outro-quizz"> <p> + </p> </button> 
+                </div> 
+             </div>
+             <div class="quizz-row-usuario">
+                 <div class="quizz">
+                 </div> 
+             </div>
+         </div>
+                    
+        <div class="caixa-quizzes">
+            <div class="titulo"> 
+               <div> <p> Todos os Quizzes</p> </div> 
+            </div> 
+            <div class="quizz-row">
+               </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/mateus.js"></script>
 </body>
 </html>
