@@ -2,13 +2,14 @@ axios.defaults.headers.common['Authorization'] = 'q2ieOg8Y10hTP78k4DXPL5S4';
 
 /*verificar requisitos para criar Quizz / Renderizar questões */
 
-function openBox () {
-    
-    const openInput = document.querySelector(".input-questions");
-    openInput.classList.remove("hidden");
+let questionQuizz = document.querySelector('.question-Quizz');
 
-    const hiddenBox = document.querySelector(".questions");
-    hiddenBox.classList.add("hidden");
+function openBox (key) {
+    const closeBox = key.parentElement;
+    closeBox.classList.add("hidden");
+
+    const lookBox = key.parentElement.nextElementSibling;
+    lookBox.classList.remove("hidden");
 };
 
 function infoQuizz () {
@@ -17,7 +18,6 @@ function infoQuizz () {
 
     const titleQuizz = document.querySelector('.title-Quizz');
     const imageQuizz = document.querySelector('.image-Quizz').value;
-    const questionQuizz = document.querySelector('.question-Quizz');
     const levelQuizz = document.querySelector('.level-Quizz');
 
     let formatURL = /^https:\/\//i;
@@ -93,11 +93,86 @@ function infoQuizz () {
         `       
             renderizarQuestions.innerHTML += questions;
         };
-    }; 
+    };
+
+    const primeiraPergunta = document.querySelector('.questions');
+    primeiraPergunta.classList.add('hidden');
+
+    const segundaPergunta = document.querySelector('.input-questions');
+    segundaPergunta.classList.remove('hidden');
 };
 
 
 /*verificar requisitos para criar Quizz*/
+
+let buzzQuizz = {
+	title: "Título do quizz",
+	image: "https://http.cat/411.jpg",
+	questions: [
+		{
+			title: "Título da pergunta 1",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 2",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		},
+		{
+			title: "Título da pergunta 3",
+			color: "#123456",
+			answers: [
+				{
+					text: "Texto da resposta 1",
+					image: "https://http.cat/411.jpg",
+					isCorrectAnswer: true
+				},
+				{
+					text: "Texto da resposta 2",
+					image: "https://http.cat/412.jpg",
+					isCorrectAnswer: false
+				}
+			]
+		}
+	],
+	levels: [
+		{
+			title: "Título do nível 1",
+			image: "https://http.cat/411.jpg",
+			text: "Descrição do nível 1",
+			minValue: 0
+		},
+		{
+			title: "Título do nível 2",
+			image: "https://http.cat/412.jpg",
+			text: "Descrição do nível 2",
+			minValue: 50
+		}
+	]
+}
 
     function questionsQuizz (){
 
@@ -111,8 +186,18 @@ function infoQuizz () {
         let validateResponse2 = 0;
         let validateResponse3 = 0;
 
-        
+        buzzQuizz.questions = [];
+
+
         /*verificar titulo*/
+
+        for (let i = 0; i < questionQuizz.value; i++) {
+            (buzzQuizz.questions).push({
+                title: "Título da pergunta 1",
+                color: "#123456",
+                answers: []
+            });
+        };
         
         for (let i = 1; i <= questionQuizz.value; i++) {
             const textQuestion = document.querySelector('.text-question');
@@ -120,24 +205,51 @@ function infoQuizz () {
                 alert('Texto da pergunta deve ter no mínimo 20 caracteres!');
             }
             else {
+                buzzQuizz.questions[i - 1].title = textQuestion.value;
                 validateTitle++ 
             };
         };
         
 
-        /*verificar cor*/
+        /*verificar cor de fundo da pergunta*/ 
 
         for (let i = 1; i <= questionQuizz.value; i++) {
-            const colorQuestion = document.querySelector('.color-question'); 
-            const regexp = /[G-Z]/gi;
-            const validaCor = colorQuestion[i].value.toLowerCase().substring(1, 7);
-            const matches_array = validaCor.match(regexp);
-
-            if (colorQuestion[i].value.length !== 7 || colorQuestion[i].value.indexOf('#') !== 0 || matches_array !== null) {
+            const colorQuestion = document.querySelector('.color-question');
+            if (colorQuestion[0] !== "#") {
                 alert('A cor de fundo da Pergunta deve ser digitada no formato Hexadecimal!');
-            } else {
-                validateColor++ 
-            };  
+            }
+    
+            if (colorQuestion[0] === "#") {
+                if (colorQuestion.length !== 7) {
+                    alert('A cor de fundo da Pergunta deve ser digitada no formato Hexadecimal!');
+                }
+            }
+    
+            if (colorQuestion[0] === "#" && colorQuestion.length === 7) {
+    
+                for (let j = 1; j <= (colorQuestion.length - 1); j++) {
+                    if ((colorQuestion[j] === "A") || (colorQuestion[j] === "a") ||
+                        (colorQuestion[j] === "B") || (colorQuestion[j] === "b") ||
+                        (colorQuestion[j] === "C") || (colorQuestion[j] === "c") ||
+                        (colorQuestion[j] === "D") || (colorQuestion[j] === "d") ||
+                        (colorQuestion[j] === "E") || (colorQuestion[j] === "e") ||
+                        (colorQuestion[j] === "F") || (colorQuestion[j] === "f") ||
+                        (colorQuestion[j] === "0") || (colorQuestion[j] === "1") ||
+                        (colorQuestion[j] === "2") || (colorQuestion[j] === "3") ||
+                        (colorQuestion[j] === "4") || (colorQuestion[j] === "5") ||
+                        (colorQuestion[j] === "6") || (colorQuestion[j] === "7") ||
+                        (colorQuestion[j] === "8") || (colorQuestion[j] === "9")) {
+
+                        validateColor++
+                    }
+                    else {
+                        alert('A cor de fundo da Pergunta deve ser digitada no formato Hexadecimal!');
+                        validateColor = 0;
+                        break;
+                    }
+                }
+                buzzQuizz.questions[i - 1].color = colorQuestion;
+            };
         };
 
 
@@ -147,9 +259,14 @@ function infoQuizz () {
             const textResponse = document.querySelector('.text-response').value;
     
             if (textResponse.length === 0) {
-                alert('Textos das respostas não pode estar vazio.!');
+                alert('Textos das respostas não pode estar vazio!');
             }
             else {
+                (buzzQuizz.questions[i - 1].answers).push({
+                    text: elemento3,
+                    image: "https://http.cat/411.jpg",
+                    isCorrectAnswer: true
+                });
                 validateResponse++
             };
         };
@@ -161,10 +278,11 @@ function infoQuizz () {
             const imageResponse = document.querySelector('.image-response').value;
 
             if (padraoURL.test(imageResponse)) {
+                buzzQuizz.questions[i - 1].answers[0].image = imageResponse;
                 validateImage++
             }
             else {
-                alert('As imagens de resposta correta deve ter formato de URL.');
+                alert('As imagens das respostas corretas devem ter formato de URL!');
             };
         };
 
@@ -185,6 +303,11 @@ function infoQuizz () {
             }
             else if ((responseIncorrect !== "") && (responseIncorrect2 === "") && (responseIncorrect3 === "")) {
                 if (padraoURL.test(imageIncorrect)) {
+                    (buzzQuizz.questions[i - 1].answers).push({
+                        text: incorreta1,
+                        image: incorretaImagem1,
+                        isCorrectAnswer: false
+                    });
                     validateResponse1++
                 }
                 else {
@@ -193,6 +316,11 @@ function infoQuizz () {
             }
             else if ((responseIncorrect === "") && (responseIncorrect2 !== "") && (responseIncorrect3 === "")) {
                 if (padraoURL.test(imageIncorrect2)) {
+                    (buzzQuizz.questions[i - 1].answers).push({
+                        text: incorreta2,
+                        image: incorretaImagem2,
+                        isCorrectAnswer: false
+                    });
                     validateResponse2++
                 }
                 else {
@@ -201,6 +329,11 @@ function infoQuizz () {
             }
             else if ((responseIncorrect === "") && (responseIncorrect2 === "") && (responseIncorrect3 !== "")) {
                 if (padraoURL.test(imageIncorrect3)) {
+                    (buzzQuizz.questions[i - 1].answers).push({
+                        text: incorreta3,
+                        image: incorretaImagem3,
+                        isCorrectAnswer: false
+                    });
                     validateResponse3++
                 }
                 else {
@@ -209,6 +342,15 @@ function infoQuizz () {
             }
             else if ((responseIncorrect !== "") && (responseIncorrect2 !== "") && (responseIncorrect3 === "")) {
                 if (padraoURL.test(imageIncorrect) && padraoURL.test(imageIncorrect2)) {
+                    (buzzQuizz.questions[i - 1].answers).push({
+                        text: incorreta1,
+                        image: incorretaImagem1,
+                        isCorrectAnswer: false
+                    }, {
+                        text: incorreta2,
+                        image: incorretaImagem2,
+                        isCorrectAnswer: false
+                    });
                     validateResponse1++
                     validateResponse2++
                 }
@@ -218,6 +360,15 @@ function infoQuizz () {
             }
             else if ((responseIncorrect !== "") && (responseIncorrect2 === "") && (responseIncorrect3 !== "")) {
                 if (padraoURL.test(imageIncorrect) && padraoURL.test(imageIncorrect3)) {
+                    (buzzQuizz.questions[i - 1].answers).push({
+                        text: incorreta1,
+                        image: incorretaImagem1,
+                        isCorrectAnswer: false
+                    }, {
+                        text: incorreta3,
+                        image: incorretaImagem3,
+                        isCorrectAnswer: false
+                    });
                     validateResponse1++
                     validateResponse3++
                 }
@@ -227,6 +378,15 @@ function infoQuizz () {
             }
             else if ((responseIncorrect === "") && (responseIncorrect2 !== "") && (responseIncorrect3 !== "")) {
                 if (padraoURL.test(imageIncorrect2) && padraoURL.test(imageIncorrect3)) {
+                    (buzzQuizz.questions[i - 1].answers).push({
+                        text: incorreta2,
+                        image: incorretaImagem2,
+                        isCorrectAnswer: false
+                    }, {
+                        text: incorreta3,
+                        image: incorretaImagem3,
+                        isCorrectAnswer: false
+                    });
                     validateResponse2++
                     validateResponse3++
                 }
@@ -236,6 +396,19 @@ function infoQuizz () {
             }
             else {
                 if (padraoURL.test(imageIncorrect) && padraoURL.test(imageIncorrect2) && padraoURL.test(imageIncorrect3)) {
+                    (buzzQuizz.questions[i - 1].answers).push({
+                        text: incorreta1,
+                        image: incorretaImagem1,
+                        isCorrectAnswer: false
+                    }, {
+                        text: incorreta2,
+                        image: incorretaImagem2,
+                        isCorrectAnswer: false
+                    }, {
+                        text: incorreta3,
+                        image: incorretaImagem3,
+                        isCorrectAnswer: false
+                    });
                     validateResponse1++
                     validateResponse2++
                     validateResponse3++
@@ -263,5 +436,8 @@ function infoQuizz () {
     /*Renderizar níveis*/
 
     function renderizarLevel() {
-        
+        const level = document.querySelector(".container-level");
+        level.classList.remove("hidden");
+
+        const divLevel = document.querySelector(".container-level .containerConteudo main");
     }
