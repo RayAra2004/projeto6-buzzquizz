@@ -99,9 +99,10 @@ body {
 }
 
 .caixa-quizzes {
-    display: flex;
-    flex-direction: column;
     
+    
+    
+
     width: 70%;
 }
 
@@ -119,14 +120,15 @@ body {
     display: flex;
     justify-content: flex-start;
     margin-bottom: 10px;
+    
 }
 
 .quizz-row {
+   
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
 }
 
 .quizz-row-usuario {
@@ -138,18 +140,21 @@ body {
 }
 
 .quizz {
-    width: 100%;
-    height: 100%;
+    flex-basis: 33.33%;
+    height: 181px;
     border-radius: 5px;
     
-    
     position: relative;
-
 } 
 
+.quizz:hover {
+    cursor: pointer;
+} 
+
+
 .quizz img {
-    width: 340px;
-    height: 181px;
+    width: 300px;
+    height: 141px;
     border-radius: 5px;
     
 
@@ -159,7 +164,7 @@ body {
 
 .quizz p {
     position: absolute;
-    bottom: 10px;
+    bottom: 50px;
     left: 10px;
     font-family: 'Roboto';
     font-style: normal;
@@ -232,6 +237,9 @@ body {
         display: flex;
         flex-direction: column;
     }
+    .quizz {
+        margin-bottom: 20px;
+    } 
 }
 
 

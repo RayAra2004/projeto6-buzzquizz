@@ -10,16 +10,19 @@ function renderizaQuizz() {
 
     for (let i = 0; i < quizz.length; i++) {
         quizzes = quizz[i];
-        console.log(quizzes);
-        divQuizzes.innerHTML = `<div class="quizz">
+        //deve haver um onclick na div do quizz direcionando para a Pagina de um Quizz.
+        divQuizzes.innerHTML += `
+         <div class="quizz">
     <img src="${quizzes.image}">
-    <p> ${quizzes.title} </p>
-    </div>` 
-    }  
- 
-
+    <p> ${quizzes.title} </p> 
+    </div> `
 }
-
+    
+      
+ 
+    console.log(quizzes.id);
+}
+ 
 
 
 
