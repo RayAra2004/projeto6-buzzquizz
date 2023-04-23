@@ -30,6 +30,7 @@
         <button onclick="infoQuizz ()">Prosseguir pra criar perguntas</button>
     </div>
 
+
     <div class="container-questions hidden">
         <h1 class="title">Crie suas perguntas</h1>
             
@@ -42,33 +43,21 @@
         <button onclick="questionsQuizz ()">Prosseguir pra criar níveis</button>
     </div>
 
+
         <div class="container-level hidden">
         <h1 class="title">Agora, decida os níveis</h1>
 
         <div class="content-level">
-            <h1 class="question">Nível 1</h1>
+            
+            <ul></ul>
 
-            <input type="text" placeholder="Título do nível">
-            <input type="number" class="margin-input2" placeholder="% de acerto mínima">
-            <input type="URL" class="margin-input2" placeholder="URL da imagem do nível">
-            <input type="number" class="margin-input2" placeholder="Descrição do nível">
         </div>
-
-        <div class="questions">
-            <h1 class="question">Nível 2</h1>
-            <ion-icon name="create-outline"></ion-icon>
-        </div>
-
-        <div class="questions">
-            <h1 class="question">Nível 3</h1>
-            <ion-icon name="create-outline"></ion-icon>
-        </div>
-
-        <button>Finalizar Quizz</button>
-        
+    
+        <button onclick="checkLevel ()">Finalizar Quizz</button>     
     </div>
 
-    <div class="container-success container hidden">
+
+    <div class="container-success hidden">
         <h1 class="title">Seu quizz está pronto!</h1>
 
         <button>Acessar Quizz</button>

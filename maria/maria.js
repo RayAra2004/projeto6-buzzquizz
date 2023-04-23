@@ -1,8 +1,7 @@
 axios.defaults.headers.common['Authorization'] = 'q2ieOg8Y10hTP78k4DXPL5S4';
 
-/*verificar requisitos para criar Quizz / Renderizar questões */
-
 let questionQuizz = document.querySelector('.question-Quizz');
+const levelQuizz = document.querySelector('.level-Quizz');
 
 function openBox (key) {
     const closeBox = key.parentElement;
@@ -12,15 +11,19 @@ function openBox (key) {
     lookBox.classList.remove("hidden");
 };
 
+
+/*verificar requisitos para criar Quizz / Renderizar questões */
+
 function infoQuizz () {
 
     let count = 0;
 
     const titleQuizz = document.querySelector('.title-Quizz');
     const imageQuizz = document.querySelector('.image-Quizz').value;
-    const levelQuizz = document.querySelector('.level-Quizz');
+    
 
     let formatURL = /^https:\/\//i;
+
 
     if (titleQuizz.value.length < 20 || titleQuizz.value.length > 65){
         alert('O titulo deve ter no mínimo 20 e no máximo 65 caracteres.')
@@ -36,7 +39,7 @@ function infoQuizz () {
     };
 
 
-    if (questionQuizz.value < 3){
+    if (questionQuizz.value < 1){
         alert('Deve ter no mínimo 3 perguntas.')
     } else {
         count++
@@ -95,15 +98,17 @@ function infoQuizz () {
         };
     };
 
-    const primeiraPergunta = document.querySelector('.questions');
-    primeiraPergunta.classList.add('hidden');
+    const hiddenClass = document.querySelector('.questions');
+    hiddenClass.classList.add('hidden');
 
-    const segundaPergunta = document.querySelector('.input-questions');
-    segundaPergunta.classList.remove('hidden');
+    const lookClass = document.querySelector('.input-questions');
+    lookClass.classList.remove('hidden');
 };
 
 
 /*verificar requisitos para criar Quizz*/
+
+          /*QUIZZ MODELO*/
 
 let buzzQuizz = {
 	title: "Título do quizz",
@@ -174,6 +179,7 @@ let buzzQuizz = {
 	]
 }
 
+
     function questionsQuizz (){
 
         const number = Number(questionQuizz.value);
@@ -214,7 +220,7 @@ let buzzQuizz = {
         /*verificar cor de fundo da pergunta*/ 
 
         for (let i = 1; i <= questionQuizz.value; i++) {
-            const colorQuestion = document.querySelector('.color-question');
+            const colorQuestion = document.querySelector('.color-question').value;
             if (colorQuestion[0] !== "#") {
                 alert('A cor de fundo da Pergunta deve ser digitada no formato Hexadecimal!');
             }
@@ -263,7 +269,7 @@ let buzzQuizz = {
             }
             else {
                 (buzzQuizz.questions[i - 1].answers).push({
-                    text: elemento3,
+                    text: textResponse,
                     image: "https://http.cat/411.jpg",
                     isCorrectAnswer: true
                 });
@@ -294,7 +300,7 @@ let buzzQuizz = {
             const responseIncorrect2 = document.querySelector('.response-incorrect2').value;
             const responseIncorrect3 = document.querySelector('.response-incorrect3').value;
     
-            const imageIncorrect = document.querySelector('.image-incorrect').value;
+            const imageIncorrect = document.querySelector('.image-incorrect1').value;
             const imageIncorrect2 = document.querySelector('.image-incorrect2').value;
             const imageIncorrect3 = document.querySelector('.image-incorrect3').value;
 
@@ -304,8 +310,8 @@ let buzzQuizz = {
             else if ((responseIncorrect !== "") && (responseIncorrect2 === "") && (responseIncorrect3 === "")) {
                 if (padraoURL.test(imageIncorrect)) {
                     (buzzQuizz.questions[i - 1].answers).push({
-                        text: incorreta1,
-                        image: incorretaImagem1,
+                        text: responseIncorrect,
+                        image: imageIncorrect,
                         isCorrectAnswer: false
                     });
                     validateResponse1++
@@ -317,8 +323,8 @@ let buzzQuizz = {
             else if ((responseIncorrect === "") && (responseIncorrect2 !== "") && (responseIncorrect3 === "")) {
                 if (padraoURL.test(imageIncorrect2)) {
                     (buzzQuizz.questions[i - 1].answers).push({
-                        text: incorreta2,
-                        image: incorretaImagem2,
+                        text: responseIncorrect2,
+                        image: imageIncorrect2,
                         isCorrectAnswer: false
                     });
                     validateResponse2++
@@ -330,8 +336,8 @@ let buzzQuizz = {
             else if ((responseIncorrect === "") && (responseIncorrect2 === "") && (responseIncorrect3 !== "")) {
                 if (padraoURL.test(imageIncorrect3)) {
                     (buzzQuizz.questions[i - 1].answers).push({
-                        text: incorreta3,
-                        image: incorretaImagem3,
+                        text: responseIncorrect3,
+                        image: imageIncorrect3,
                         isCorrectAnswer: false
                     });
                     validateResponse3++
@@ -343,12 +349,12 @@ let buzzQuizz = {
             else if ((responseIncorrect !== "") && (responseIncorrect2 !== "") && (responseIncorrect3 === "")) {
                 if (padraoURL.test(imageIncorrect) && padraoURL.test(imageIncorrect2)) {
                     (buzzQuizz.questions[i - 1].answers).push({
-                        text: incorreta1,
-                        image: incorretaImagem1,
+                        text: responseIncorrect,
+                        image: imageIncorrect,
                         isCorrectAnswer: false
                     }, {
-                        text: incorreta2,
-                        image: incorretaImagem2,
+                        text: responseIncorrect2,
+                        image: imageIncorrect2,
                         isCorrectAnswer: false
                     });
                     validateResponse1++
@@ -361,12 +367,12 @@ let buzzQuizz = {
             else if ((responseIncorrect !== "") && (responseIncorrect2 === "") && (responseIncorrect3 !== "")) {
                 if (padraoURL.test(imageIncorrect) && padraoURL.test(imageIncorrect3)) {
                     (buzzQuizz.questions[i - 1].answers).push({
-                        text: incorreta1,
-                        image: incorretaImagem1,
+                        text: responseIncorrect,
+                        image: imageIncorrect,
                         isCorrectAnswer: false
                     }, {
-                        text: incorreta3,
-                        image: incorretaImagem3,
+                        text: imageIncorrect3,
+                        image: responseIncorrect3,
                         isCorrectAnswer: false
                     });
                     validateResponse1++
@@ -379,12 +385,12 @@ let buzzQuizz = {
             else if ((responseIncorrect === "") && (responseIncorrect2 !== "") && (responseIncorrect3 !== "")) {
                 if (padraoURL.test(imageIncorrect2) && padraoURL.test(imageIncorrect3)) {
                     (buzzQuizz.questions[i - 1].answers).push({
-                        text: incorreta2,
-                        image: incorretaImagem2,
+                        text: responseIncorrect2,
+                        image: imageIncorrect2,
                         isCorrectAnswer: false
                     }, {
-                        text: incorreta3,
-                        image: incorretaImagem3,
+                        text: responseIncorrect3,
+                        image: imageIncorrect3,
                         isCorrectAnswer: false
                     });
                     validateResponse2++
@@ -397,16 +403,16 @@ let buzzQuizz = {
             else {
                 if (padraoURL.test(imageIncorrect) && padraoURL.test(imageIncorrect2) && padraoURL.test(imageIncorrect3)) {
                     (buzzQuizz.questions[i - 1].answers).push({
-                        text: incorreta1,
-                        image: incorretaImagem1,
+                        text: responseIncorrect,
+                        image: imageIncorrect,
                         isCorrectAnswer: false
                     }, {
-                        text: incorreta2,
-                        image: incorretaImagem2,
+                        text: responseIncorrect2,
+                        image: imageIncorrect2,
                         isCorrectAnswer: false
                     }, {
-                        text: incorreta3,
-                        image: incorretaImagem3,
+                        text: responseIncorrect3,
+                        image: imageIncorrect3,
                         isCorrectAnswer: false
                     });
                     validateResponse1++
@@ -420,24 +426,149 @@ let buzzQuizz = {
         };
        
         
-        if ((validateTitle === number) && (validateColor % number === 0)
+        if ((validateTitle === number) && ((validateColor % number) === 0)
         && (validateResponse === number) && (validateImage === number)
         && ((validateResponse1 === number) || (validateResponse2 === number)
             || (validateResponse3 === number))) {
-        const elementValidate = document.querySelector(".container-questions");
 
+        const elementValidate = document.querySelector(".container-questions");
         elementValidate.classList.add("hidden");
 
-        renderizarLevel();
+
+        /*Renderizar níveis*/
+
+        const levels = document.querySelector(".container-level");
+        levels.classList.remove("hidden");
+
+
+        const divLevel = document.querySelector(".container-level .content-level ul");
+        divLevel.innerHTML = "";
+
+        for (let i = 1; i <= levelQuizz.value; i++){
+
+            const levelsQuizz = `
+                <div class="level">
+                    <h1 class="response">Nivel ${i}</h1>
+                    <div onclick="openBox(this)" class="ion-icon">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="input-level hidden">
+                    <h1 class="response">Nível ${i}</h1>
+
+                    <input class="title-level" type="text" placeholder="Título do nível">
+                    <input class="percent-level" type="number"  placeholder="% de acerto mínima">
+                    <input class="image-level" type="URL" class="margin-input2" placeholder="URL da imagem do nível">
+                    <input class="info-level" type="text" class="margin-input2" placeholder="Descrição do nível">
+                </div>
+            `
+                divLevel.innerHTML += levelsQuizz;
+            };
+        };
+                const hiddenDiv = document.querySelector('.level');
+                hiddenDiv.classList.add('hidden');
+
+                const lookDiv = document.querySelector('.input-level');
+                lookDiv.classList.remove('hidden');
     };
-};
 
 
-    /*Renderizar níveis*/
+    /*Verificar requisitos dos níveis*/
 
-    function renderizarLevel() {
-        const level = document.querySelector(".container-level");
-        level.classList.remove("hidden");
+    function checkLevel () {
 
-        const divLevel = document.querySelector(".container-level .containerConteudo main");
-    }
+        const selectLevel = document.querySelectorAll(".level");
+        let validateLevel = 0
+        let padraoURL = /^https:\/\//i;
+
+        let titleLevel = document.querySelector('.input-level .title-level').value;
+        let percentLevel = document.querySelector('.input-level .percent-level');
+        let imageLevel = document.querySelector('.input-level .image-level').value;
+        let infoLevel = document.querySelector('.input-level .info-level').value;
+
+        buzzQuizz.levels = [];
+
+        for (let i = 0; i < selectLevel.length; i++) {
+            
+            let countLevel = 0
+
+            if (titleLevel.length >= 10) {
+                countLevel++;
+            }
+            else {
+                alert('O titulo do nível precisa ter pelo menos 10 caracteres!');
+            }
+
+
+            if (percentLevel >= 0 && percentLevel <= 100) {
+                countLevel++;
+            }
+            else {
+                alert('A porcentagem do nível deve ser entre 0 e 100');
+            }
+
+
+            if (padraoURL.test(imageLevel)) {
+                countLevel++;
+            }
+            else {
+                alert('Imagem do nível deve ter formato de URL');
+            }
+
+
+            if (infoLevel.length >= 30) {
+                countLevel++;
+            }
+            else {
+                alert('A descrição do nível precisa ter pelo menos 30 caracteres');
+            }
+
+
+            if (countLevel >= 4) {
+                (buzzQuizz.levels).push({
+                    title: titleLevel,
+                    image: imageLevel,
+                    text: infoLevel,
+                    minValue: percentLevel,
+                })
+                validateLevel++;
+            }
+        } 
+
+        if (validateLevel === selectLevel.length) {
+            alert("Tudo pronto para criação do seu BuzzQuizz!");
+            const promisePOST = axios.post("https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes", buzzQuizz);
+            promisePOST.then(completQuizz);
+            promisePOST.catch(errorQuizz);
+    
+        }
+        else {
+            buzzQuizz.levels = []
+            alert("OPS! Preencha corretamente os campos para finalizar seu BuzzQuizz");
+        };
+    };
+
+
+
+    function completQuizz (response){
+
+    };
+
+
+    function errorQuizz (response){
+
+    };
+
+
+
+
+
+
+        
+
+        
+
+       
+
+       
