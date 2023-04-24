@@ -138,10 +138,9 @@ function reiniciaQuizz(){
     document.querySelectorAll('.respondido').forEach( e => e.classList.remove('respondido') );
     
     qtdAcertos = 0;
-    qtdPeguntas = 0;
     qtdPerguntasRespondidas = 0;
 
-    capturaQuizz();
+    //capturaQuizz();
 
 }
 
