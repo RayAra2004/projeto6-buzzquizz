@@ -30,21 +30,20 @@
             </div>
             <!-- deve ter onclick para a tela de criação de quizz -->
             <div>
-                <button class="botao-criar-quizz" onclick="criarQuizz()" data-test="create-btn"> <p> Criar Quizz </p> </button>
+                <button class="botao-criar-quizz" onclick="criarQuizz(this)" data-test="create-btn"> <p> Criar Quizz </p> </button>
             </div>
         </div>
          <div class="caixa-seus-quizzes escondido">
             <div class="cab-seus-quizzes"> 
-                <div class="titulo-seus-quizzes"> <p> Seus quizzes </p> </div>
+             <div class="titulo-seus-quizzes"> <p> Seus quizzes </p> </div>
                 <!-- deve ter onclick para a tela de criação de quizz -->
                 <div> 
-                    <button class ="botao-criar-outro-quizz" data-test="create-btn"> <p> + </p> </button> 
+                    <button class ="botao-criar-outro-quizz" data-test="create-btn" onclick="criarQuizz(this)"> <p> + </p> </button> 
                 </div> 
-             </div>
-             <div class="quizz-row-usuario">
-                 <div class="quizz">
+            </div>
+                 <div class="quizz-row-user">
                  </div> 
-             </div>
+             
          </div>
                     
         <div class="caixa-quizzes">
