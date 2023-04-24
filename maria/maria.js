@@ -203,17 +203,19 @@ function questionsQuizz (){
 
 
     /*verificar titulo*/
-
+    //criando as questões no quizz zeradas
     for (let i = 0; i < questionQuizz.value; i++) {
         (buzzQuizz.questions).push({
-            title: "Título da pergunta 1",
-            color: "#123456",
+            title: "",
+            color: "",
             answers: []
         });
     };
     
+    //Preenchimento do título da pergunta
     for (let i = 1; i <= questionQuizz.value; i++) {
-        const textQuestion = document.querySelector('.text-question');
+        const pergunta = document.querySelector(`.per${i}`);
+        const textQuestion = pergunta.querySelector('.text-question');
         if (textQuestion.value.length < 20) {
             alert('Texto da pergunta deve ter no mínimo 20 caracteres!');
         }
@@ -225,9 +227,10 @@ function questionsQuizz (){
     
 
     /*verificar cor de fundo da pergunta*/ 
-
+    //Preencimento da cor da pergunta
     for (let i = 1; i <= questionQuizz.value; i++) {
-        const colorQuestion = document.querySelector('.color-question').value;
+        const pergunta = document.querySelector(`.per${i}`);
+        const colorQuestion = pergunta.querySelector('.color-question').value;
         if (colorQuestion[0] !== "#") {
             alert('A cor de fundo da Pergunta deve ser digitada no formato Hexadecimal!');
         }
@@ -274,12 +277,9 @@ function questionsQuizz (){
     */
 
     for (let i = 1; i <= questionQuizz.value; i++) {
-        const textResponse = document.querySelector(`.per${i}`);
-        console.log(textResponse); //mostra a div de cada pergunta respondida
-        console.log(textResponse.querySelector('.text-question').value);
-        console.log(textResponse.querySelector('.color-question').value);
-        /*console.log(textResponse.querySelector('.color-question'));
-        console.log(textResponse.querySelector('.color-question'));*/
+        const pergunta = document.querySelector(`.per${i}`);
+        const textResponse = pergunta.querySelector('.text-response').value;
+
 
         if (textResponse.length === 0) {
             alert('Textos das respostas não pode estar vazio!');
@@ -287,7 +287,7 @@ function questionsQuizz (){
         else {
             (buzzQuizz.questions[i - 1].answers).push({
                 text: textResponse,
-                image: "https://http.cat/411.jpg",
+                image: "",
                 isCorrectAnswer: true
             });
             validateResponse++
@@ -311,7 +311,8 @@ function questionsQuizz (){
     /*verificar URL da imagem da resposta correta*/
 
     for (let i = 1; i <= questionQuizz.value; i++) {
-        const imageResponse = document.querySelector('.image-response').value;
+        const pergunta = document.querySelector(`.per${i}`);
+        const imageResponse = pergunta.querySelector('.image-response').value;
 
         if (padraoURL.test(imageResponse)) {
             buzzQuizz.questions[i - 1].answers[0].image = imageResponse;
@@ -326,13 +327,14 @@ function questionsQuizz (){
     /*verificar se há pelo menos 1 resposta incorreta*/
 
     for (let i = 1; i <= questionQuizz.value; i++) {
-        const responseIncorrect = document.querySelector('.response-incorrect').value;
-        const responseIncorrect2 = document.querySelector('.response-incorrect2').value;
-        const responseIncorrect3 = document.querySelector('.response-incorrect3').value;
+        const pergunta = document.querySelector(`.per${i}`);
+        const responseIncorrect = pergunta.querySelector('.response-incorrect').value;
+        const responseIncorrect2 = pergunta.querySelector('.response-incorrect2').value;
+        const responseIncorrect3 = pergunta.querySelector('.response-incorrect3').value;
 
-        const imageIncorrect = document.querySelector('.image-incorrect1').value;
-        const imageIncorrect2 = document.querySelector('.image-incorrect2').value;
-        const imageIncorrect3 = document.querySelector('.image-incorrect3').value;
+        const imageIncorrect = pergunta.querySelector('.image-incorrect1').value;
+        const imageIncorrect2 = pergunta.querySelector('.image-incorrect2').value;
+        const imageIncorrect3 = pergunta.querySelector('.image-incorrect3').value;
 
         if ((responseIncorrect === "") && (responseIncorrect2 === "") && (responseIncorrect3 === "")) {
             alert('Deve haver pelo menos 1 resposta incorreta e a imagem deve ter formato de URL.');
@@ -484,7 +486,7 @@ function questionsQuizz (){
                 </div>
             </div>
 
-            <div class="input-level hidden">
+            <div class="input-level nivel${i} hidden">
                 <h1 class="response">Nível ${i}</h1>
 
                 <input class="title-level" type="text" placeholder="Título do nível">
@@ -511,17 +513,18 @@ function checkLevel () {
     const selectLevel = document.querySelectorAll(".level");
     let validateLevel = 0
     let padraoURL = /^https:\/\//i;
-
-    let titleLevel = document.querySelector('.input-level .title-level').value;
-    let percentLevel = document.querySelector('.input-level .percent-level').value;
-    let imageLevel = document.querySelector('.input-level .image-level').value;
-    let infoLevel = document.querySelector('.input-level .info-level').value;
+    let zeroPercentual = 0;
 
     buzzQuizz.levels = [];
 
-    for (let i = 0; i < selectLevel.length; i++) {
+    for (let i = 1; i < selectLevel.length + 1; i++) {
         
         let countLevel = 0
+        let nivel = document.querySelector(`.nivel${i}`)
+        let titleLevel = nivel.querySelector('.input-level .title-level').value;
+        let percentLevel = nivel.querySelector('.input-level .percent-level').value;
+        let imageLevel = nivel.querySelector('.input-level .image-level').value;
+        let infoLevel = nivel.querySelector('.input-level .info-level').value;
 
         if (titleLevel.length >= 10) {
             countLevel++;
@@ -530,9 +533,15 @@ function checkLevel () {
             alert('O titulo do nível precisa ter pelo menos 10 caracteres!');
         }
 
+        if(percentLevel === 0){
+            zeroPercentual = 1;
+        }
 
         if (Number(percentLevel) >= 0 && Number(percentLevel) <= 100) {
             countLevel++;
+        }
+        else if(zeroPercentual === 0 && i === selectLevel.length){
+            alert('A porcentagem do nível deve ser 0 em pelo menos 1 caso');
         }
         else {
             alert('A porcentagem do nível deve ser entre 0 e 100');
