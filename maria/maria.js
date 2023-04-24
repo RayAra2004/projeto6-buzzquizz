@@ -146,7 +146,7 @@ function infoQuizz () {
                     </div>
                 </div>
 
-                <div class="input-questions hidden">
+                <div class="input-questions per${i} hidden">
                     <h1 class="response">Pergunta ${i}</h1>
                     <input class="text-question" type="text" placeholder="Texto da pergunta">
                     <input class="color-question" type="text" class="margin-input2" placeholder="Cor de fundo da pergunta">
@@ -266,10 +266,20 @@ function questionsQuizz (){
     };
 
 
-    /*verificar respostas*/
+    /*verificar respostas
+    
+    esse trecho iria pro final dessa função
+    
+    
+    */
 
     for (let i = 1; i <= questionQuizz.value; i++) {
-        const textResponse = document.querySelector('.text-response').value;
+        const textResponse = document.querySelector(`.per${i}`);
+        console.log(textResponse); //mostra a div de cada pergunta respondida
+        console.log(textResponse.querySelector('.text-question').value);
+        console.log(textResponse.querySelector('.color-question').value);
+        /*console.log(textResponse.querySelector('.color-question'));
+        console.log(textResponse.querySelector('.color-question'));*/
 
         if (textResponse.length === 0) {
             alert('Textos das respostas não pode estar vazio!');
@@ -283,6 +293,19 @@ function questionsQuizz (){
             validateResponse++
         };
     };
+
+
+    /*termina aqui*/ 
+
+
+
+
+
+
+
+
+
+
 
 
     /*verificar URL da imagem da resposta correta*/
