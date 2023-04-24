@@ -604,9 +604,9 @@ function completQuizz (response){
     `;
 
     sucesso.innerHTML += `
-    <button onclick="capturaQuizzUser(${id = response.data.id})">Acessar Quizz</button>
+    <button onclick="capturaQuizzUser(${id = response.data.id})" data-test="go-quiz">Acessar Quizz</button>
     
-    <span onclick="voltaHomee()">Voltar pra home</span>`;
+    <span onclick="voltaHomee()" data-test="go-home">Voltar pra home</span>`;
     
 
 };
