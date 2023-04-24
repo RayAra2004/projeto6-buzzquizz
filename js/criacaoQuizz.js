@@ -511,7 +511,7 @@ function checkLevel () {
     for (let i = 1; i < selectLevel.length + 1; i++) {
         
         let countLevel = 0
-        let nivel = document.querySelector(`.nivel${i}`)
+        let nivel = document.querySelector(`.nivel${i}`);
         let titleLevel = nivel.querySelector('.input-level .title-level').value;
         let percentLevel = nivel.querySelector('.input-level .percent-level').value;
         let imageLevel = nivel.querySelector('.input-level .image-level').value;
@@ -525,7 +525,7 @@ function checkLevel () {
         }
 
 
-        if(Number(percentLevel) === 0){
+        if(percentLevel === 0){
             countLevel++;
         } else {
             alert('A porcentagem do nível deve ser 0 em pelo menos 1 caso!');
