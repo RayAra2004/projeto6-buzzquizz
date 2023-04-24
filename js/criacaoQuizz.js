@@ -616,7 +616,7 @@ function voltaHomee(){
     sucesso.classList.add('hidden');
 
     const home = document.querySelector('.container-home');
-    sucesso.classList.remove('escondido');
+    home.classList.remove('escondido');
     
 }
 
