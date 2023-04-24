@@ -510,7 +510,7 @@ function checkLevel () {
 
     for (let i = 1; i < selectLevel.length + 1; i++) {
         
-        let countLevel = 5;
+        let countLevel = 0;
         let nivel = document.querySelector(`.nivel${i}`)
         let titleLevel = nivel.querySelector('.input-level .title-level').value;
         let percentLevel = nivel.querySelector('.input-level .percent-level').value;
@@ -523,18 +523,15 @@ function checkLevel () {
         else {
             alert('O titulo do nível precisa ter pelo menos 10 caracteres!');
         }
-
-        console.log(percentLevel);
+        /*
         if (Number(zeroPercentual) === 0 ) {
             if(Number(percentLevel) === 0){
-                countLevel++;
+                
                 zeroPercentual = 1;
             } else {
                 alert('A porcentagem do nível deve ser 0 em pelo menos 1 caso!');
             }
-        }
-        
-
+        }*/
 
         if (Number(percentLevel) >= 0 && Number(percentLevel) <= 100) {
             countLevel++;
@@ -559,7 +556,7 @@ function checkLevel () {
         }
 
 
-        if (countLevel >= 5) {
+        if (countLevel >= 4) {
             (buzzQuizz.levels).push({
                 title: titleLevel,
                 image: imageLevel,
@@ -591,7 +588,37 @@ function completQuizz (response){
     quizzesUser.push(obj);
     const q = JSON.stringify(quizzesUser);
     localStorage.setItem('user', q);
+
+    const sucesso = document.querySelector('.container-success');
+    sucesso.classList.remove('hidden');
+
+    const levelDiv = document.querySelector('.container-level');
+    levelDiv.classList.add('hidden');
+
+    const imgSucesso = document.querySelector('.imagemSucesso');
+
+    imgSucesso.innerHTML = `
+        <img src="${buzzQuizz.image}">
+        <p> ${buzzQuizz.title} </p>
+    
+    `;
+
+    sucesso.innerHTML += `
+    <button onclick="capturaQuizzUser(${id = response.data.id})" data-test="go-quiz">Acessar Quizz</button>
+    
+    <span onclick="voltaHomee()" data-test="go-home">Voltar pra home</span>`;
+    
+
 };
+
+function voltaHomee(){
+    const sucesso = document.querySelector('.container-success');
+    sucesso.classList.add('hidden');
+
+    const home = document.querySelector('.container-home');
+    sucesso.classList.remove('escondido');
+    
+}
 
 
 function errorQuizz (response){

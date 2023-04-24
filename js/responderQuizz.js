@@ -109,7 +109,21 @@ function verificarResposta(res){
 }
 
 function capturaQuizz(divQuizz){
-    const id = divQuizz.getAttribute('id');
+    
+        const id = divQuizz.getAttribute('id');
+    
+    const promise = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${id}`); //TODO: Alterar, pois está capturando 1 quizzEscolhido
+    promise.then(res =>{
+        quizzEscolhido = res.data;
+        renderizarQuizz();
+    });
+
+    promise.catch(res =>{
+        alert(`Não foi possível carregar os quizzes\n${res.message}`);
+    })
+}
+
+function capturaQuizzUser(id){
     const promise = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${id}`); //TODO: Alterar, pois está capturando 1 quizzEscolhido
     promise.then(res =>{
         quizzEscolhido = res.data;
