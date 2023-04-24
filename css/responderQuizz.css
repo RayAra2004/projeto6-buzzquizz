@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.responder_quizz{
+    display: none;
+}
+
 body{
     background-color: #FAFAFA;
 }

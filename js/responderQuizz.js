@@ -4,6 +4,8 @@ let quizz, qtdAcertos = 0, qtdPeguntas = 0, qtdPerguntasRespondidas = 0;
 let respostas = [];
 
 function renderizaQuizz(){
+    const responder_quizz = document.querySelector('.responder_quizz');
+    responder_quizz.style.display = "block";
     const divTitle = document.querySelector('.title');
     divTitle.innerHTML = `
     <img src="${quizz.image}" alt="">
