@@ -510,7 +510,7 @@ function checkLevel () {
 
     for (let i = 1; i < selectLevel.length + 1; i++) {
         
-        let countLevel = 5;
+        let countLevel = 0;
         let nivel = document.querySelector(`.nivel${i}`)
         let titleLevel = nivel.querySelector('.input-level .title-level').value;
         let percentLevel = nivel.querySelector('.input-level .percent-level').value;
@@ -523,18 +523,15 @@ function checkLevel () {
         else {
             alert('O titulo do nível precisa ter pelo menos 10 caracteres!');
         }
-
-        console.log(percentLevel);
+        /*
         if (Number(zeroPercentual) === 0 ) {
             if(Number(percentLevel) === 0){
-                countLevel++;
+                
                 zeroPercentual = 1;
             } else {
                 alert('A porcentagem do nível deve ser 0 em pelo menos 1 caso!');
             }
-        }
-        
-
+        }*/
 
         if (Number(percentLevel) >= 0 && Number(percentLevel) <= 100) {
             countLevel++;
@@ -559,7 +556,7 @@ function checkLevel () {
         }
 
 
-        if (countLevel >= 5) {
+        if (countLevel >= 4) {
             (buzzQuizz.levels).push({
                 title: titleLevel,
                 image: imageLevel,
