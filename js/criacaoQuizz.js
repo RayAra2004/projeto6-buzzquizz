@@ -525,7 +525,7 @@ function checkLevel () {
         }
 
 
-        if(percentLevel === 0){
+        if(Number(percentLevel) === 0){
             countLevel++;
         } else {
             alert('A porcentagem do nível deve ser 0 em pelo menos 1 caso!');
