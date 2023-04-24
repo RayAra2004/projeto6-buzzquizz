@@ -510,8 +510,8 @@ function checkLevel () {
 
     for (let i = 1; i < selectLevel.length + 1; i++) {
         
-        let countLevel = 0
-        let nivel = document.querySelector(`.nivel${i}`);
+        let countLevel = 5;
+        let nivel = document.querySelector(`.nivel${i}`)
         let titleLevel = nivel.querySelector('.input-level .title-level').value;
         let percentLevel = nivel.querySelector('.input-level .percent-level').value;
         let imageLevel = nivel.querySelector('.input-level .image-level').value;
@@ -524,12 +524,16 @@ function checkLevel () {
             alert('O titulo do nível precisa ter pelo menos 10 caracteres!');
         }
 
-
-        if(percentLevel === 0){
-            countLevel++;
-        } else {
-            alert('A porcentagem do nível deve ser 0 em pelo menos 1 caso!');
+        console.log(percentLevel);
+        if (Number(zeroPercentual) === 0 ) {
+            if(Number(percentLevel) === 0){
+                countLevel++;
+                zeroPercentual = 1;
+            } else {
+                alert('A porcentagem do nível deve ser 0 em pelo menos 1 caso!');
+            }
         }
+        
 
 
         if (Number(percentLevel) >= 0 && Number(percentLevel) <= 100) {
