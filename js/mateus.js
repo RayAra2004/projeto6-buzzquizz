@@ -12,19 +12,15 @@ function renderizaQuizz() {
         quizzes = quizz[i];
         //deve haver um onclick na div do quizz direcionando para a Pagina de um Quizz.
         divQuizzes.innerHTML += `
-         <div class="quizz">
+         <div class="quizz" data-test="others-quiz" id="${quizzes.id}">
     <img src="${quizzes.image}">
     <p> ${quizzes.title} </p> 
     </div> `
 }
-    
-      
  
-    console.log(quizzes.id);
+        
 }
  
-
-
 
 function obterQuizz() {
     
@@ -33,7 +29,7 @@ function obterQuizz() {
     promessa.then(res=>{
         quizz = res.data
         renderizaQuizz();
-        console.log(quizz);
+    
     });
     promessa.catch(erro => {
         alert('Erro ao buscar quizzes no servidor, tente novamente mais tarde!');
