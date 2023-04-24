@@ -46,7 +46,7 @@ function renderizaQuizz() {
             const divQuizzesUser = document.querySelector('.quizz-row-user');
             divQuizzesUser.innerHTML = "";
             divQuizzesUser.innerHTML +=  `
-            <div class="quizz" data-test="others-quiz" id="${quizzes.id}" onclick="capturaQuizz(this)"">
+            <div class="quizz" data-test="my-quiz" id="${quizzes.id}" onclick="capturaQuizz(this)"">
        <img src="${quizzes.image}">
        <p> ${quizzes.title} </p> 
        </div> ` 
