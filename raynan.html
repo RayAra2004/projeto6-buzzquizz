@@ -10,18 +10,20 @@
     <link rel="stylesheet" href="./css/raynan_mobile.css">
 </head>
 <body>
-    <header>
-        <p>BuzzQuizz</p>
-    </header>
-    <div class="title"></div>
-    <div class="perguntas"></div>
-    <div class="resultadoQuizz">
-        <div class="qtdAcertos"></div>
-        <div class="mensagem"></div>
-    </div>
-    <div class="navegacaoPosQuizz">
-        <button onclick="reiniciaQuizz()">Reiniciar Quizz</button>
-        <p onclick="voltarHome()">Voltar pra Home</p>
+    <div class="responder_quizz">
+        <header>
+            <p>BuzzQuizz</p>
+        </header>
+        <div class="title" data-test="banner"></div>
+        <div class="perguntas"></div>
+        <div class="resultadoQuizz">
+            <div class="qtdAcertos"></div>
+            <div class="mensagem"></div>
+        </div>
+        <div class="navegacaoPosQuizz">
+            <button onclick="reiniciaQuizz()" data-test="restart">Reiniciar Quizz</button>
+            <p onclick="voltarHome()" data-test="go-home">Voltar pra Home</p>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/raynan.js"></script>

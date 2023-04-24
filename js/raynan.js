@@ -15,8 +15,8 @@ function renderizaQuizz(){
     quizz.questions.forEach(question =>{
         divPerguntas.innerHTML += `
             
-            <div class="pergunta">
-                <div class="title_pergunta" style="background-color: ${question.color};">
+            <div class="pergunta" data-test="question">
+                <div class="title_pergunta" data-test="question-title" style="background-color: ${question.color};">
                     <p>${question.title}</p>
                 </div>
                 <div class="respostas">
@@ -31,9 +31,9 @@ function renderizaQuizz(){
             let ultimaPergunta = document.querySelector('.perguntas .pergunta:last-child');
             let divRespostas = ultimaPergunta.querySelector('.respostas');
             divRespostas.innerHTML += `
-                <div class="resposta" onclick="verificarResposta(this)" res=${per.isCorrectAnswer}>
+                <div class="resposta" data-test="answer" onclick="verificarResposta(this)" res=${per.isCorrectAnswer}>
                     <img src="${per.image}" alt="">
-                    <p>${per.text}</p>
+                    <p data-test="answer-text">${per.text}</p>
                 </div>
             `;
         })
@@ -62,12 +62,12 @@ function exibiResultado(){
     }
     const resultado = divResultado.querySelector('.qtdAcertos');
     resultado.innerHTML = `
-        <p class="title_level"> ${porcetagemAcertos}% de acerto:${nivel.title}</p>
+        <p class="title_level" data-test="level-title"> ${porcetagemAcertos}% de acerto:${nivel.title}</p>
     `;
     const mensagem = divResultado.querySelector('.mensagem');
     mensagem.innerHTML = `
-        <img src="${nivel.image}" alt="">
-        <p>${nivel.text}</p>
+        <img src="${nivel.image}" alt="" data-test="level-img">
+        <p data-test="level-text">${nivel.text}</p>
     `
 }
 

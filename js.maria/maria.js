@@ -583,6 +583,7 @@ function checkLevel () {
 
 function completQuizz (response){
     console.log("Quizz adicionado");
+    
 };
 
 
