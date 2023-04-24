@@ -591,7 +591,37 @@ function completQuizz (response){
     quizzesUser.push(obj);
     const q = JSON.stringify(quizzesUser);
     localStorage.setItem('user', q);
+
+    const sucesso = document.querySelector('.container-success');
+    sucesso.classList.remove('hidden');
+
+    const levelDiv = document.querySelector('.container-level');
+    levelDiv.classList.add('hidden');
+
+    const imgSucesso = document.querySelector('.imagemSucesso');
+
+    imgSucesso.innerHTML = `
+        <img src="${buzzQuizz.image}">
+        <p> ${buzzQuizz.title} </p>
+    
+    `;
+
+    sucesso.innerHTML += `
+    <button onclick="capturaQuizzUser(${id = response.data.id})">Acessar Quizz</button>
+    
+    <span onclick="voltaHomee()">Voltar pra home</span>`;
+    
+
 };
+
+function voltaHomee(){
+    const sucesso = document.querySelector('.container-success');
+    sucesso.classList.add('hidden');
+
+    const home = document.querySelector('.container-home');
+    sucesso.classList.remove('escondido');
+    
+}
 
 
 function errorQuizz (response){
