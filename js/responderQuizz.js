@@ -1,20 +1,22 @@
 axios.defaults.headers.common['Authorization'] = 'q2ieOg8Y10hTP78k4DXPL5S4';
 
-let quizz, qtdAcertos = 0, qtdPeguntas = 0, qtdPerguntasRespondidas = 0;
+let quizzEscolhido, qtdAcertos = 0, qtdPeguntas = 0, qtdPerguntasRespondidas = 0;
 let respostas = [];
 
-function renderizaQuizz(){
+function renderizarQuizz(){
     const responder_quizz = document.querySelector('.responder_quizz');
     responder_quizz.style.display = "block";
+    const container_home = document.querySelector('.container-home');
+    container_home.classList.add('escondido');
     const divTitle = document.querySelector('.title');
     divTitle.innerHTML = `
-    <img src="${quizz.image}" alt="">
-    <p>${quizz.title}</p>`;
+    <img src="${quizzEscolhido.image}" alt="">
+    <p>${quizzEscolhido.title}</p>`;
 
     const divPerguntas = document.querySelector('.perguntas');
     divPerguntas.innerHTML = '';
-    qtdPeguntas = Number(quizz.questions.length);
-    quizz.questions.forEach(question =>{
+    qtdPeguntas = Number(quizzEscolhido.questions.length);
+    quizzEscolhido.questions.forEach(question =>{
         divPerguntas.innerHTML += `
             
             <div class="pergunta" data-test="question">
@@ -53,12 +55,12 @@ function exibiResultado(){
         divResultado.scrollIntoView();
     }, 2000);
     let nivel;
-    for(let i = 0; i < quizz.levels.length; i++){
-        if(i === quizz.levels.length - 1){
-            nivel = quizz.levels[i];
+    for(let i = 0; i < quizzEscolhido.levels.length; i++){
+        if(i === quizzEscolhido.levels.length - 1){
+            nivel = quizzEscolhido.levels[i];
             break
-        } else if(quizz.levels[i].minValue >= porcetagemAcertos && porcetagemAcertos < quizz.levels[i + 1].minValue){
-            nivel = quizz.levels[i];
+        } else if(quizzEscolhido.levels[i].minValue >= porcetagemAcertos && porcetagemAcertos < quizzEscolhido.levels[i + 1].minValue){
+            nivel = quizzEscolhido.levels[i];
             break
         }
     }
@@ -106,11 +108,12 @@ function verificarResposta(res){
     }
 }
 
-function capturaQuizz(){
-    const promise = axios.get('https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/3'); //TODO: Alterar, pois está capturando 1 quizz
+function capturaQuizz(divQuizz){
+    const id = divQuizz.getAttribute('id');
+    const promise = axios.get(`https://mock-api.driven.com.br/api/vm/buzzquizz/quizzes/${id}`); //TODO: Alterar, pois está capturando 1 quizzEscolhido
     promise.then(res =>{
-        quizz = res.data;
-        renderizaQuizz();
+        quizzEscolhido = res.data;
+        renderizarQuizz();
     });
 
     promise.catch(res =>{
@@ -142,6 +145,9 @@ function reiniciaQuizz(){
 
 }
 
-
-capturaQuizz();
-
+function voltarHome(){
+    const responder_quizz = document.querySelector('.responder_quizz');
+    responder_quizz.style.display = "none";
+    const container_home = document.querySelector('.container-home');
+    container_home.classList.remove('escondido');
+}

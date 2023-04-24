@@ -12,13 +12,13 @@ function renderizaQuizz() {
         quizzes = quizz[i];
         //deve haver um onclick na div do quizz direcionando para a Pagina de um Quizz.
         divQuizzes.innerHTML += `
-         <div class="quizz" data-test="others-quiz" id="${quizzes.id}">
+         <div class="quizz" data-test="others-quiz" id="${quizzes.id}" onclick="capturaQuizz(this)"">
     <img src="${quizzes.image}">
     <p> ${quizzes.title} </p> 
     </div> `
 }
  
-        
+
 }
  
 
