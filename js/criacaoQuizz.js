@@ -583,11 +583,14 @@ function checkLevel () {
     };
 };
 
-
+const quizzesUser = [];
 
 function completQuizz (response){
-    console.log("Quizz adicionado");
-    
+    console.log(response);
+    obj = {"id": response.data.id};
+    quizzesUser.push(obj);
+    const q = JSON.stringify(quizzesUser);
+    localStorage.setItem('user', q);
 };
 
 
