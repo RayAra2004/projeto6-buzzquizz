@@ -39,11 +39,13 @@ body {
 .caixa-botao {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-
+    
     width: 70%;
     height: 181px;
+    
+    
     background-color: #FAFAFA;
     border: 1px dashed #D5D5D5;
     border-radius: 5px;
@@ -99,10 +101,6 @@ body {
 }
 
 .caixa-quizzes {
-    
-    
-    
-
     width: 70%;
 }
 

@@ -3,6 +3,13 @@ let quizzes;
 let quizz = [];
 
 
+function criarQuizz() {
+    const container_home = document.querySelector('.container-home');
+    container_home.classList.add('escondido');
+    const container_criacao = document.querySelector ('.container-criacao-quizz')
+    container_criacao.classList.remove('hidden');
+}
+
 
 function renderizaQuizz() {
     const divQuizzes = document.querySelector('.quizz-row');
