@@ -29,7 +29,7 @@ body {
     color: #FFFFFF;
 }
 
-.container {
+.container-home {
     display: flex;
     flex-direction: column;
     justify-content: center;
