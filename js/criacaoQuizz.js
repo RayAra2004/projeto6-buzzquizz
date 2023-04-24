@@ -139,7 +139,7 @@ function infoQuizz () {
 
         for (let i = 1; i <= questionQuizz.value; i++){
             const questions = `
-                <div data-test="question-ctn>
+                <div data-test="question-ctn">
                     <div class="questions">
                         <h1 class="response">Pergunta ${i}</h1>
                         <div  data-test="toggle" onclick="openBox(this)" class="ion-icon">
