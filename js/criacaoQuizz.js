@@ -139,26 +139,28 @@ function infoQuizz () {
 
         for (let i = 1; i <= questionQuizz.value; i++){
             const questions = `
-                <div class="questions">
-                    <h1 class="response">Pergunta ${i}</h1>
-                    <div onclick="openBox(this)" class="ion-icon">
-                        <ion-icon name="create-outline"></ion-icon>
+                <div data-test="question-ctn>
+                    <div class="questions">
+                        <h1 class="response">Pergunta ${i}</h1>
+                        <div  data-test="toggle" onclick="openBox(this)" class="ion-icon">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </div>
                     </div>
-                </div>
-                <div class="input-questions per${i} hidden">
-                    <h1 class="response">Pergunta ${i}</h1>
-                    <input class="text-question" type="text" placeholder="Texto da pergunta">
-                    <input class="color-question" type="text" class="margin-input2" placeholder="Cor de fundo da pergunta">
-                    <h1 class="response">Resposta correta</h1>
-                    <input class="text-response" type="text" placeholder="Resposta correta">
-                    <input class="image-response" type="URL" placeholder="URL da imagem">
-                    <h1 class="response">Respostas incorretas</h1>
-                    <input class="response-incorrect" type="text" placeholder="Resposta incorreta 1">
-                    <input class="image-incorrect1" type="URL" placeholder="URL da imagem 1">
-                    <input class="response-incorrect2" type="text" placeholder="Resposta incorreta 2">
-                    <input class="image-incorrect2" type="URL" placeholder="URL da imagem 2">
-                    <input class="response-incorrect3" type="text" placeholder="Resposta incorreta 3">
-                    <input class="image-incorrect3" type="URL" placeholder="URL da imagem 3">
+                    <div class="input-questions per${i} hidden">
+                        <h1 class="response">Pergunta ${i}</h1>
+                        <input data-test="question-input" class="text-question" type="text" placeholder="Texto da pergunta">
+                        <input data-test="question-color-input" class="color-question" type="text" class="margin-input2" placeholder="Cor de fundo da pergunta">
+                        <h1 class="response">Resposta correta</h1>
+                        <input data-test="correct-answer-input" class="text-response" type="text" placeholder="Resposta correta">
+                        <input data-test="correct-img-input" class="image-response" type="URL" placeholder="URL da imagem">
+                        <h1 class="response">Respostas incorretas</h1>
+                        <input data-test="wrong-answer-input" class="response-incorrect" type="text" placeholder="Resposta incorreta 1">
+                        <input data-test="wrong-img-input" class="image-incorrect1" type="URL" placeholder="URL da imagem 1">
+                        <input data-test="wrong-answer-input" class="response-incorrect2" type="text" placeholder="Resposta incorreta 2">
+                        <input data-test="wrong-img-input" class="image-incorrect2" type="URL" placeholder="URL da imagem 2">
+                        <input data-test="wrong-answer-input" class="response-incorrect3" type="text" placeholder="Resposta incorreta 3">
+                        <input data-test="wrong-img-input" class="image-incorrect3" type="URL" placeholder="URL da imagem 3">
+                    </div>
                 </div>
         `       
             renderizarQuestions.innerHTML += questions;
@@ -472,18 +474,20 @@ function questionsQuizz (){
     for (let i = 1; i <= levelQuizz.value; i++){
 
         const levelsQuizz = `
-            <div class="level">
-                <h1 class="response">Nivel ${i}</h1>
-                <div onclick="openBox(this)" class="ion-icon">
-                    <ion-icon name="create-outline"></ion-icon>
+            <div data-test="level-ctn">
+                <div class="level">
+                    <h1 class="response">Nivel ${i}</h1>
+                    <div data-test="toggle" onclick="openBox(this)" class="ion-icon">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </div>
                 </div>
-            </div>
-            <div class="input-level nivel${i} hidden">
-                <h1 class="response">Nível ${i}</h1>
-                <input class="title-level" type="text" placeholder="Título do nível">
-                <input class="percent-level" type="number"  placeholder="% de acerto mínima">
-                <input class="image-level" type="URL" class="margin-input2" placeholder="URL da imagem do nível">
-                <input class="info-level" type="text" class="margin-input2" placeholder="Descrição do nível">
+                <div class="input-level nivel${i} hidden">
+                    <h1 class="response">Nível ${i}</h1>
+                    <input data-test="level-input" class="title-level" type="text" placeholder="Título do nível">
+                    <input data-test="level-percent-input" class="percent-level" type="number"  placeholder="% de acerto mínima">
+                    <input data-test="level-img-input" class="image-level" type="URL" class="margin-input2" placeholder="URL da imagem do nível">
+                    <input data-test="level-description-input" class="info-level" type="text" class="margin-input2" placeholder="Descrição do nível">
+                </div>
             </div>
         `
             divLevel.innerHTML += levelsQuizz;
